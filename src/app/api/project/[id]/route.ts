@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ProjectStore } from "@/lib/data-store";
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
-        // Await params before accessing properties
         const { id: projectId } = await params;
 
         if (!projectId) {

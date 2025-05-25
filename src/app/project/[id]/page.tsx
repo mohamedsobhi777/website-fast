@@ -8,7 +8,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { FloatingCard, FloatingCardPresets } from "@/components/ui/floating-card"
 import {
   ArrowLeft,
-  Globe,
   Share2,
   Download,
   ExternalLink,
@@ -26,7 +25,8 @@ import {
   GitBranch
 } from "lucide-react"
 import Link from "next/link"
-import { ProjectWithVersion, ProjectVersion } from "@/lib/data-store"
+import { ProjectWithVersion } from "@/lib/data-store"
+import { ProjectVersion } from "@/lib/db/schema"
 
 export default function ProjectPage() {
   const params = useParams()
@@ -34,15 +34,15 @@ export default function ProjectPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [copySuccess, setCopySuccess] = useState(false)
-  
+
   // Revision state
   const [isRevising, setIsRevising] = useState(false)
   const [revisionPrompt, setRevisionPrompt] = useState("")
   const [isGeneratingRevision, setIsGeneratingRevision] = useState(false)
-  
+
   // Version history state
   const [showVersionHistory, setShowVersionHistory] = useState(false)
-  
+
   // Deployment state
   const [isDeploying, setIsDeploying] = useState(false)
   const [deploymentUrl, setDeploymentUrl] = useState<string | null>(null)
@@ -108,7 +108,7 @@ export default function ProjectPage() {
   const handleShare = (platform: string) => {
     const url = getShareUrl()
     const text = `Check out this AI-generated website I created with WebsiteFast! Original prompt: "${project?.originalPrompt}"`
-    
+
     const shareUrls = {
       twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
@@ -277,11 +277,11 @@ export default function ProjectPage() {
                 </Badge>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-3">
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <Button
+                variant="outline"
+                size="sm"
                 onClick={() => setShowVersionHistory(!showVersionHistory)}
               >
                 <History className="w-4 h-4 mr-2" />
@@ -295,7 +295,7 @@ export default function ProjectPage() {
                 <Download className="w-4 h-4 mr-2" />
                 Download
               </Button>
-              <Button 
+              <Button
                 size="sm"
                 className="bg-blue-600 hover:bg-blue-700 text-white"
                 onClick={handleDeploy}
@@ -318,7 +318,7 @@ export default function ProjectPage() {
                   <Share2 className="w-4 h-4 mr-2" />
                   Share
                 </Button>
-                
+
                 {/* Share dropdown */}
                 <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
                   <div className="p-2 space-y-1">
@@ -366,9 +366,9 @@ export default function ProjectPage() {
                   </h3>
                   <p className="text-sm text-green-600">
                     Your website is now live at:{' '}
-                    <a 
-                      href={deploymentUrl} 
-                      target="_blank" 
+                    <a
+                      href={deploymentUrl}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="font-medium underline hover:no-underline"
                     >
@@ -418,7 +418,7 @@ export default function ProjectPage() {
                   Open in New Tab
                 </Button>
               </div>
-              
+
               <div className="bg-gray-100 rounded-lg overflow-hidden" style={{ height: '600px' }}>
                 <iframe
                   srcDoc={project.activeVersion?.generatedHtml || ''}
@@ -434,9 +434,9 @@ export default function ProjectPage() {
                 <h3 className="text-lg font-semibold text-gray-900">Request Revision</h3>
                 <Badge variant="outline">v{project.activeVersion?.versionNumber}</Badge>
               </div>
-              
+
               {!isRevising ? (
-                <Button 
+                <Button
                   onClick={() => setIsRevising(true)}
                   className="w-full"
                   variant="outline"
@@ -528,14 +528,13 @@ export default function ProjectPage() {
               <FloatingCard className="bg-white rounded-lg p-6" {...FloatingCardPresets.normal}>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Version History</h3>
                 <div className="space-y-3 max-h-96 overflow-y-auto">
-                  {project.versions?.map((version: any) => (
+                  {project.versions?.map((version: ProjectVersion) => (
                     <div
                       key={version.id}
-                      className={`p-3 rounded-lg border transition-all cursor-pointer ${
-                        version.isActive 
-                          ? 'border-blue-200 bg-blue-50' 
+                      className={`p-3 rounded-lg border transition-all cursor-pointer ${version.isActive
+                          ? 'border-blue-200 bg-blue-50'
                           : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
-                      }`}
+                        }`}
                       onClick={() => !version.isActive && handleSwitchVersion(version.id)}
                     >
                       <div className="flex items-center justify-between mb-2">
@@ -565,8 +564,8 @@ export default function ProjectPage() {
                       </div>
                     </div>
                   )) || (
-                    <p className="text-sm text-gray-500">No versions found.</p>
-                  )}
+                      <p className="text-sm text-gray-500">No versions found.</p>
+                    )}
                 </div>
               </FloatingCard>
             )}
