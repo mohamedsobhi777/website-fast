@@ -5,7 +5,6 @@ import { useParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
-import { FloatingCard, FloatingCardPresets } from "@/components/ui/floating-card"
 import {
   ArrowLeft,
   Share2,
@@ -418,7 +417,7 @@ export default function ProjectPage() {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Website Preview */}
-            <FloatingCard className="bg-white rounded-lg p-6" {...FloatingCardPresets.subtle}>
+            <div className="bg-white rounded-lg p-6 border border-gray-200">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold text-gray-900">Website Preview</h2>
                 <Button
@@ -438,7 +437,7 @@ export default function ProjectPage() {
                   title="Website Preview"
                 />
               </div>
-            </FloatingCard>
+            </div>
 
             {/* Request Revision */}
             <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-all duration-300">
@@ -508,7 +507,7 @@ export default function ProjectPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Project Info */}
-            <FloatingCard className="bg-white rounded-lg p-6" {...FloatingCardPresets.subtle}>
+            <div className="bg-white rounded-lg p-6 border border-gray-200">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Project Details</h3>
               <div className="space-y-3">
                 <div>
@@ -533,21 +532,23 @@ export default function ProjectPage() {
                   </p>
                 </div>
               </div>
-            </FloatingCard>
+            </div>
 
             {/* Version History */}
             {showVersionHistory && (
-              <FloatingCard className="bg-white rounded-lg p-6" {...FloatingCardPresets.normal}>
+              <div className="bg-white rounded-lg p-6 border border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Version History</h3>
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {project.versions?.map((version: Version) => (
-                    <div
+                    <button
                       key={version.id}
-                      className={`p-3 rounded-lg border transition-all cursor-pointer ${version.isActive
-                          ? 'border-blue-200 bg-blue-50'
+                      className={`w-full p-3 rounded-lg border text-left transition-colors ${
+                        version.isActive 
+                          ? 'border-blue-200 bg-blue-50' 
                           : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
-                        }`}
+                      }`}
                       onClick={() => !version.isActive && handleSwitchVersion(version.id)}
+                      disabled={version.isActive}
                     >
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center space-x-2">
@@ -574,12 +575,12 @@ export default function ProjectPage() {
                           {new Date(version.updatedAt).toLocaleTimeString()}
                         </span>
                       </div>
-                    </div>
+                    </button>
                   )) || (
-                      <p className="text-sm text-gray-500">No versions found.</p>
-                    )}
+                    <p className="text-sm text-gray-500">No versions found.</p>
+                  )}
                 </div>
-              </FloatingCard>
+              </div>
             )}
           </div>
         </div>

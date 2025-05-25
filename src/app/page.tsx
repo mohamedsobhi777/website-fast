@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
 import { AnimatedCounter } from "@/components/ui/animated-counter"
-import { FloatingCard, FloatingCardPresets } from "@/components/ui/floating-card"
 import { BrandShowcase, BrandLogos } from "@/components/ui/brand-showcase"
 import { TierCard, TierPresets } from "@/components/ui/tier-card"
 import {
@@ -307,20 +306,19 @@ export default function LandingPage() {
                 { value: "$12M", label: "domain", subLabel: "investment", icon: TrendingUp },
                 { value: "2025", label: "Founded", subLabel: "in stealth", icon: Clock },
               ].map((stat, index) => (
-                <FloatingCard 
+                <div 
                   key={index} 
-                  className="text-center space-y-3 group bg-white rounded-2xl p-6" 
-                  {...FloatingCardPresets.subtle}
+                  className="text-center space-y-3 group bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300"
                 >
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg">
                     <stat.icon className="w-6 h-6 text-blue-600" />
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                  <div className="text-3xl font-bold text-gray-900">
                     <AnimatedCounter value={stat.value} />
                   </div>
                   <div className="text-sm font-semibold text-gray-700">{stat.label}</div>
                   <div className="text-xs text-gray-500">{stat.subLabel}</div>
-                </FloatingCard>
+                </div>
               ))}
             </div>
           </div>
@@ -396,55 +394,452 @@ export default function LandingPage() {
                   icon: Zap,
                   title: "Lightning Fast",
                   description: "Generate complete websites in under 60 seconds with our advanced AI engine.",
-                  preset: FloatingCardPresets.subtle,
                 },
                 {
                   icon: Smartphone,
                   title: "Mobile First",
                   description: "Every website is automatically optimized for mobile, tablet, and desktop.",
-                  preset: FloatingCardPresets.purple,
                 },
                 {
                   icon: Globe,
                   title: "Global CDN",
                   description: "Your sites are served from our global network for maximum speed worldwide.",
-                  preset: FloatingCardPresets.emerald,
                 },
                 {
                   icon: Code,
                   title: "Clean Code",
                   description: "Export production-ready code that follows best practices and web standards.",
-                  preset: FloatingCardPresets.normal,
                 },
                 {
                   icon: Rocket,
                   title: "One-Click Deploy",
                   description: "Deploy instantly to our hosting or export to your preferred platform.",
-                  preset: FloatingCardPresets.intense,
                 },
                 {
                   icon: Sparkles,
                   title: "AI Magic",
                   description: "Our AI understands context and creates websites that match your vision perfectly.",
-                  preset: FloatingCardPresets.purple,
                 },
               ].map((feature, index) => (
-                <FloatingCard
+                <div
                   key={index}
-                  className="p-8 bg-white rounded-2xl border border-gray-200"
-                  {...feature.preset}
+                  className="p-8 bg-white rounded-2xl border border-gray-200 hover:shadow-lg transition-shadow duration-300"
                 >
                   <div className="space-y-4">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
                       <feature.icon className="h-7 w-7 text-blue-600" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-gray-900">
                       {feature.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                   </div>
-                </FloatingCard>
+                </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Examples Section */}
+        <section id="examples" className="w-full py-32 bg-gray-50/50">
+          <div className="container max-w-6xl mx-auto px-6 md:px-8">
+            <div className="text-center mb-20">
+              <Badge variant="outline" className="mb-6">
+                Examples
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                See what&apos;s{" "}
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  possible
+                </span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                From e-commerce stores to personal portfolios, see what our AI can create for you in minutes.
+              </p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  title: "E-commerce Store",
+                  description: "Modern online store with product catalog, shopping cart, and payment integration.",
+                  prompt: "Create a modern e-commerce website for selling handmade jewelry",
+                  image: "/api/placeholder/400/300",
+                  tags: ["E-commerce", "Product Catalog", "Shopping Cart"]
+                },
+                {
+                  title: "Portfolio Website",
+                  description: "Clean portfolio site for showcasing creative work and professional experience.",
+                  prompt: "Design a minimalist portfolio website for a graphic designer",
+                  image: "/api/placeholder/400/300",
+                  tags: ["Portfolio", "Gallery", "Contact Form"]
+                },
+                {
+                  title: "Restaurant Website",
+                  description: "Appetizing restaurant site with menu, reservations, and location details.",
+                  prompt: "Build a restaurant website with online menu and reservation system",
+                  image: "/api/placeholder/400/300",
+                  tags: ["Restaurant", "Menu", "Reservations"]
+                },
+                {
+                  title: "Tech Startup",
+                  description: "Professional landing page for a SaaS product with pricing and features.",
+                  prompt: "Create a landing page for a project management SaaS tool",
+                  image: "/api/placeholder/400/300",
+                  tags: ["SaaS", "Landing Page", "Pricing"]
+                },
+                {
+                  title: "Blog Website",
+                  description: "Content-focused blog with article layout, categories, and author profiles.",
+                  prompt: "Design a tech blog with article listings and author profiles",
+                  image: "/api/placeholder/400/300",
+                  tags: ["Blog", "Content", "Articles"]
+                },
+                {
+                  title: "Event Website",
+                  description: "Event landing page with schedule, speakers, and registration form.",
+                  prompt: "Build a conference website with speaker lineup and registration",
+                  image: "/api/placeholder/400/300",
+                  tags: ["Event", "Conference", "Registration"]
+                }
+              ].map((example, index) => (
+                <div key={index} className="bg-white rounded-2xl border border-gray-200 hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                  <div className="aspect-video bg-gray-100 relative overflow-hidden">
+                    <img 
+                      src={example.image} 
+                      alt={example.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {example.tags.map((tag, tagIndex) => (
+                        <Badge key={tagIndex} variant="secondary" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{example.title}</h3>
+                    <p className="text-gray-600 mb-4 leading-relaxed">{example.description}</p>
+                    <div className="bg-gray-50 rounded-lg p-3 mb-4">
+                      <p className="text-sm text-gray-700 italic">&ldquo;{example.prompt}&rdquo;</p>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full"
+                      onClick={() => setPrompt(example.prompt)}
+                    >
+                      Use This Prompt
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-16">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Sparkles className="w-5 h-5 mr-2" />
+                Create Your Own Website
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section id="pricing" className="w-full py-32">
+          <div className="container max-w-6xl mx-auto px-6 md:px-8">
+            <div className="text-center mb-20">
+              <Badge variant="outline" className="mb-6">
+                Pricing
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Simple,{" "}
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  transparent pricing
+                </span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                No hidden fees, no per-site charges. Pay once and create unlimited websites.
+              </p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
+              {/* Starter Plan */}
+              <div className="bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow duration-300">
+                <div className="text-center">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Starter</h3>
+                  <p className="text-gray-600 mb-6">Perfect for individuals and small projects</p>
+                  <div className="mb-6">
+                    <span className="text-4xl font-bold text-gray-900">Free</span>
+                  </div>
+                  <Button variant="outline" size="lg" className="w-full mb-8">
+                    Get Started
+                  </Button>
+                </div>
+                <ul className="space-y-4">
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-green-600" />
+                    </div>
+                    <span className="text-gray-700">3 websites per month</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-green-600" />
+                    </div>
+                    <span className="text-gray-700">Basic templates</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-green-600" />
+                    </div>
+                    <span className="text-gray-700">HTML export</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-green-600" />
+                    </div>
+                    <span className="text-gray-700">Community support</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Pro Plan - Most Popular */}
+              <div className="bg-white rounded-2xl border-2 border-blue-500 p-8 relative hover:shadow-xl transition-shadow duration-300">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <Badge className="bg-blue-600 text-white px-4 py-1">Most Popular</Badge>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Pro</h3>
+                  <p className="text-gray-600 mb-6">Best for professionals and growing businesses</p>
+                  <div className="mb-6">
+                    <span className="text-4xl font-bold text-gray-900">$39</span>
+                    <span className="text-gray-600">/month</span>
+                  </div>
+                  <Button size="lg" className="w-full mb-8 bg-blue-600 hover:bg-blue-700 text-white">
+                    Start Free Trial
+                  </Button>
+                </div>
+                <ul className="space-y-4">
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-blue-600" />
+                    </div>
+                    <span className="text-gray-700">Unlimited websites</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-blue-600" />
+                    </div>
+                    <span className="text-gray-700">Premium templates</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-blue-600" />
+                    </div>
+                    <span className="text-gray-700">One-click deployment</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-blue-600" />
+                    </div>
+                    <span className="text-gray-700">Custom domain support</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-blue-600" />
+                    </div>
+                    <span className="text-gray-700">Priority support</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-blue-600" />
+                    </div>
+                    <span className="text-gray-700">Advanced customization</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Enterprise Plan */}
+              <div className="bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow duration-300">
+                <div className="text-center">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Enterprise</h3>
+                  <p className="text-gray-600 mb-6">For large teams and organizations</p>
+                  <div className="mb-6">
+                    <span className="text-4xl font-bold text-gray-900">Custom</span>
+                  </div>
+                  <Button variant="outline" size="lg" className="w-full mb-8">
+                    Contact Sales
+                  </Button>
+                </div>
+                <ul className="space-y-4">
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-purple-600" />
+                    </div>
+                    <span className="text-gray-700">Everything in Pro</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-purple-600" />
+                    </div>
+                    <span className="text-gray-700">Team collaboration</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-purple-600" />
+                    </div>
+                    <span className="text-gray-700">SSO integration</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-purple-600" />
+                    </div>
+                    <span className="text-gray-700">Dedicated support</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-5 h-5 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                      <div className="w-2 h-2 rounded-full bg-purple-600" />
+                    </div>
+                    <span className="text-gray-700">Custom integrations</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="text-center mt-16">
+              <p className="text-gray-600 mb-4">All plans include:</p>
+              <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-700">
+                <span className="flex items-center">
+                  <div className="w-4 h-4 rounded-full bg-green-500 mr-2" />
+                  SSL certificates
+                </span>
+                <span className="flex items-center">
+                  <div className="w-4 h-4 rounded-full bg-green-500 mr-2" />
+                  Global CDN
+                </span>
+                <span className="flex items-center">
+                  <div className="w-4 h-4 rounded-full bg-green-500 mr-2" />
+                  Mobile optimization
+                </span>
+                <span className="flex items-center">
+                  <div className="w-4 h-4 rounded-full bg-green-500 mr-2" />
+                  SEO optimization
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Documentation Section */}
+        <section id="docs" className="w-full py-32 bg-gray-50/50">
+          <div className="container max-w-6xl mx-auto px-6 md:px-8">
+            <div className="text-center mb-20">
+              <Badge variant="outline" className="mb-6">
+                Documentation
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Everything you need to{" "}
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  get started
+                </span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Comprehensive guides, tutorials, and API documentation to help you master WebsiteFast.
+              </p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  title: "Quick Start Guide",
+                  description: "Get up and running with WebsiteFast in less than 5 minutes.",
+                  icon: Rocket,
+                  time: "5 min read",
+                  link: "#"
+                },
+                {
+                  title: "Best Practices",
+                  description: "Learn how to write effective prompts for better website generation.",
+                  icon: Star,
+                  time: "8 min read",
+                  link: "#"
+                },
+                {
+                  title: "Customization Guide",
+                  description: "Advanced techniques for customizing your generated websites.",
+                  icon: Code,
+                  time: "12 min read",
+                  link: "#"
+                },
+                {
+                  title: "Deployment Options",
+                  description: "Learn about all the ways to deploy and host your websites.",
+                  icon: Globe,
+                  time: "6 min read",
+                  link: "#"
+                },
+                {
+                  title: "API Reference",
+                  description: "Complete API documentation for developers and integrations.",
+                  icon: Code,
+                  time: "Reference",
+                  link: "#"
+                },
+                {
+                  title: "Troubleshooting",
+                  description: "Common issues and solutions to help you resolve problems quickly.",
+                  icon: Sparkles,
+                  time: "Reference",
+                  link: "#"
+                }
+              ].map((doc, index) => (
+                <a 
+                  key={index} 
+                  href={doc.link}
+                  className="block bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow duration-300 group"
+                >
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center flex-shrink-0">
+                      <doc.icon className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                          {doc.title}
+                        </h3>
+                        <Badge variant="secondary" className="text-xs">
+                          {doc.time}
+                        </Badge>
+                      </div>
+                      <p className="text-gray-600 leading-relaxed">{doc.description}</p>
+                      <div className="flex items-center mt-4 text-blue-600 text-sm font-medium">
+                        <span>Read more</span>
+                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            <div className="mt-20 bg-white rounded-2xl border border-gray-200 p-8">
+              <div className="text-center">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Need Help?</h3>
+                <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+                  Can&apos;t find what you&apos;re looking for? Our support team is here to help you succeed.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+                    Contact Support
+                  </Button>
+                  <Button variant="outline" size="lg">
+                    Join Community
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
