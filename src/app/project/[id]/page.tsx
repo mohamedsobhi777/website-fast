@@ -26,7 +26,19 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import { ProjectWithVersion } from "@/lib/data-store"
-import { ProjectVersion } from "@/lib/db/schema"
+
+// Define version interface locally to avoid import issues
+interface Version {
+  id: string
+  versionNumber: number
+  prompt: string
+  revisionPrompt: string | null
+  generatedHtml: string | null
+  status: 'generating' | 'completed' | 'failed'
+  isActive: boolean
+  createdAt: Date
+  updatedAt: Date
+}
 
 export default function ProjectPage() {
   const params = useParams()
@@ -429,7 +441,7 @@ export default function ProjectPage() {
             </FloatingCard>
 
             {/* Request Revision */}
-            <FloatingCard className="bg-white rounded-lg p-6" {...FloatingCardPresets.normal}>
+            <div className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-all duration-300">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-gray-900">Request Revision</h3>
                 <Badge variant="outline">v{project.activeVersion?.versionNumber}</Badge>
@@ -490,7 +502,7 @@ export default function ProjectPage() {
                   </div>
                 </div>
               )}
-            </FloatingCard>
+            </div>
           </div>
 
           {/* Sidebar */}
@@ -528,7 +540,7 @@ export default function ProjectPage() {
               <FloatingCard className="bg-white rounded-lg p-6" {...FloatingCardPresets.normal}>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Version History</h3>
                 <div className="space-y-3 max-h-96 overflow-y-auto">
-                  {project.versions?.map((version: ProjectVersion) => (
+                  {project.versions?.map((version: Version) => (
                     <div
                       key={version.id}
                       className={`p-3 rounded-lg border transition-all cursor-pointer ${version.isActive
