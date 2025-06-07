@@ -91,7 +91,7 @@ export default function LandingPage() {
   const tierData = [
     {
       ...TierPresets.ceo,
-      description: "Solo-founded Skio ($15M+ ARR & profitable, $8M seed). Top 200 NA LoL, VC $20.",
+      description: "Experienced founder with multiple successful product launches. Passionate about democratizing web development.",
       profiles: [
         { name: "Kennan Davison", avatar: "/api/placeholder/40/40" },
         { name: "Alex Rodriguez", avatar: "/api/placeholder/40/40" },
@@ -101,7 +101,7 @@ export default function LandingPage() {
     },
     {
       ...TierPresets.investors,
-      description: "OpenAI (ChatGPT) & Ramp execs + Saquon Barkley (Super Bowl 2025).",
+      description: "Backed by leading investors who believe in making web development accessible to everyone.",
       profiles: [
         { name: "Peter Thiel", avatar: "/api/placeholder/40/40" },
         { name: "Marc Andreessen", avatar: "/api/placeholder/40/40" },
@@ -112,7 +112,7 @@ export default function LandingPage() {
     },
     {
       ...TierPresets.team,
-      description: "Snap, Hulu, NVIDIA, & Tesla. 7-day work week.",
+      description: "World-class engineers from top companies, dedicated to building the best AI-powered web development tools.",
       profiles: [
         { name: "Emma Chen", avatar: "/api/placeholder/40/40" },
         { name: "Mike Johnson", avatar: "/api/placeholder/40/40" },
@@ -124,7 +124,7 @@ export default function LandingPage() {
     },
     {
       ...TierPresets.examples,
-      description: "See ads created with Icon (static image, B-roll + voiceover, UGC + B-roll cuts, & more).",
+      description: "Trusted by developers and designers worldwide to create beautiful, functional websites.",
       profiles: [
         { name: "Nike", avatar: "/api/placeholder/40/40" },
         { name: "Apple", avatar: "/api/placeholder/40/40" },
@@ -162,7 +162,7 @@ export default function LandingPage() {
           </span>
         </Link>
         <nav className="ml-auto flex gap-8">
-          {["Features", "Examples", "Pricing", "Docs"].map((item) => (
+          {["Features", "Examples", "About", "Docs"].map((item) => (
             <Link
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -174,9 +174,6 @@ export default function LandingPage() {
           ))}
         </nav>
         <div className="ml-8 flex gap-3">
-          <Button variant="ghost" size="sm" className="hover:bg-gray-50 transition-all duration-300">
-            Sign In
-          </Button>
           <Button
             size="sm"
             className="bg-gray-900 hover:bg-gray-800 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
@@ -198,7 +195,7 @@ export default function LandingPage() {
                   className="px-6 py-3 text-sm font-medium border-gray-200 bg-white/50 backdrop-blur-sm hover:bg-gray-50 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   <Sparkles className="w-4 h-4 mr-2 text-blue-600" />
-                  AI-Powered Website Generation • Join 50K+ Creators
+                  AI-Powered Website Generation
                 </Badge>
               </div>
 
@@ -211,13 +208,10 @@ export default function LandingPage() {
                   </span>
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                  Plan, create, & run 1000s of winning websites end-to-end.
+                  Create professional websites instantly with AI - completely free.
                 </p>
                 <p className="text-lg text-gray-500 max-w-3xl mx-auto">
-                  Just $39/mo for 14-products-in-1 (replaces $2K-$30K/mo). Unlimited website creations, custom assets, & edits. 100x cheaper than a bad agency.
-                </p>
-                <p className="text-sm font-semibold text-green-600">
-                  100% money-back guarantee, no questions asked.
+                  Generate unlimited responsive websites with modern design, custom styling, and clean code. No signup required.
                 </p>
               </div>
 
@@ -249,7 +243,7 @@ export default function LandingPage() {
                       className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                     >
                       <Send className="w-5 h-5 mr-2" />
-                      {isGenerating ? 'Generating...' : 'Generate Website ($39)'}
+                      {isGenerating ? 'Generating...' : 'Generate Website'}
                     </Button>
                   </div>
                 </div>
@@ -281,7 +275,7 @@ export default function LandingPage() {
                   className="bg-gray-900 hover:bg-gray-800 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   <Zap className="w-5 h-5 mr-2" />
-                  Get started ($39)
+                  Get Started Free
                 </Button>
                 <Button
                   variant="outline"
@@ -289,7 +283,7 @@ export default function LandingPage() {
                   className="group border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all duration-300"
                 >
                   <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
-                  Download macOS app
+                  View Examples
                 </Button>
               </div>
             </div>
@@ -462,7 +456,7 @@ export default function LandingPage() {
               {[
                 {
                   title: "E-commerce Store",
-                  description: "Modern online store with product catalog, shopping cart, and payment integration.",
+                  description: "Modern online store with product catalog and shopping cart functionality.",
                   prompt: "Create a modern e-commerce website for selling handmade jewelry",
                   image: "/api/placeholder/400/300",
                   tags: ["E-commerce", "Product Catalog", "Shopping Cart"]
@@ -483,10 +477,10 @@ export default function LandingPage() {
                 },
                 {
                   title: "Tech Startup",
-                  description: "Professional landing page for a SaaS product with pricing and features.",
+                  description: "Professional landing page for a SaaS product with features showcase.",
                   prompt: "Create a landing page for a project management SaaS tool",
                   image: "/api/placeholder/400/300",
-                  tags: ["SaaS", "Landing Page", "Pricing"]
+                  tags: ["SaaS", "Landing Page", "Features"]
                 },
                 {
                   title: "Blog Website",
@@ -547,186 +541,83 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section id="pricing" className="w-full py-32">
+        {/* About Section */}
+        <section id="about" className="w-full py-32 bg-gray-50/50">
           <div className="container max-w-6xl mx-auto px-6 md:px-8">
             <div className="text-center mb-20">
               <Badge variant="outline" className="mb-6">
-                Pricing
+                About WebsiteFast
               </Badge>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Simple,{" "}
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  transparent pricing
+                  powerful, free
                 </span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                No hidden fees, no per-site charges. Pay once and create unlimited websites.
+                Create professional websites instantly with AI. No accounts, no limits, no hidden fees. Just describe your vision and watch it come to life.
               </p>
             </div>
 
             <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
-              {/* Starter Plan */}
+              {/* Free Forever */}
               <div className="bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow duration-300">
                 <div className="text-center">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Starter</h3>
-                  <p className="text-gray-600 mb-6">Perfect for individuals and small projects</p>
-                  <div className="mb-6">
-                    <span className="text-4xl font-bold text-gray-900">Free</span>
+                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center">
+                    <Zap className="w-8 h-8 text-white" />
                   </div>
-                  <Button variant="outline" size="lg" className="w-full mb-8">
-                    Get Started
-                  </Button>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Free Forever</h3>
+                  <p className="text-gray-600">
+                    Generate unlimited websites with no restrictions. No account required, no credit card needed.
+                  </p>
                 </div>
-                <ul className="space-y-4">
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-green-600" />
-                    </div>
-                    <span className="text-gray-700">3 websites per month</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-green-600" />
-                    </div>
-                    <span className="text-gray-700">Basic templates</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-green-600" />
-                    </div>
-                    <span className="text-gray-700">HTML export</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-green-600" />
-                    </div>
-                    <span className="text-gray-700">Community support</span>
-                  </li>
-                </ul>
               </div>
 
-              {/* Pro Plan - Most Popular */}
-              <div className="bg-white rounded-2xl border-2 border-blue-500 p-8 relative hover:shadow-xl transition-shadow duration-300">
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-blue-600 text-white px-4 py-1">Most Popular</Badge>
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Pro</h3>
-                  <p className="text-gray-600 mb-6">Best for professionals and growing businesses</p>
-                  <div className="mb-6">
-                    <span className="text-4xl font-bold text-gray-900">$39</span>
-                    <span className="text-gray-600">/month</span>
-                  </div>
-                  <Button size="lg" className="w-full mb-8 bg-blue-600 hover:bg-blue-700 text-white">
-                    Start Free Trial
-                  </Button>
-                </div>
-                <ul className="space-y-4">
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-blue-600" />
-                    </div>
-                    <span className="text-gray-700">Unlimited websites</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-blue-600" />
-                    </div>
-                    <span className="text-gray-700">Premium templates</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-blue-600" />
-                    </div>
-                    <span className="text-gray-700">One-click deployment</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-blue-600" />
-                    </div>
-                    <span className="text-gray-700">Custom domain support</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-blue-600" />
-                    </div>
-                    <span className="text-gray-700">Priority support</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-blue-600" />
-                    </div>
-                    <span className="text-gray-700">Advanced customization</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Enterprise Plan */}
+              {/* AI-Powered */}
               <div className="bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow duration-300">
                 <div className="text-center">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Enterprise</h3>
-                  <p className="text-gray-600 mb-6">For large teams and organizations</p>
-                  <div className="mb-6">
-                    <span className="text-4xl font-bold text-gray-900">Custom</span>
+                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center">
+                    <Sparkles className="w-8 h-8 text-white" />
                   </div>
-                  <Button variant="outline" size="lg" className="w-full mb-8">
-                    Contact Sales
-                  </Button>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">AI-Powered</h3>
+                  <p className="text-gray-600">
+                    Advanced AI understands your vision and creates responsive, modern websites with clean code.
+                  </p>
                 </div>
-                <ul className="space-y-4">
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-purple-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-purple-600" />
-                    </div>
-                    <span className="text-gray-700">Everything in Pro</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-purple-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-purple-600" />
-                    </div>
-                    <span className="text-gray-700">Team collaboration</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-purple-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-purple-600" />
-                    </div>
-                    <span className="text-gray-700">SSO integration</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-purple-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-purple-600" />
-                    </div>
-                    <span className="text-gray-700">Dedicated support</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-5 h-5 rounded-full bg-purple-100 flex items-center justify-center mr-3">
-                      <div className="w-2 h-2 rounded-full bg-purple-600" />
-                    </div>
-                    <span className="text-gray-700">Custom integrations</span>
-                  </li>
-                </ul>
+              </div>
+
+              {/* Instant Export */}
+              <div className="bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow duration-300">
+                <div className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-orange-400 to-red-500 rounded-2xl flex items-center justify-center">
+                    <Code className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Instant Export</h3>
+                  <p className="text-gray-600">
+                    Get production-ready HTML, CSS, and JavaScript that you can deploy anywhere.
+                  </p>
+                </div>
               </div>
             </div>
 
             <div className="text-center mt-16">
-              <p className="text-gray-600 mb-4">All plans include:</p>
+              <p className="text-gray-600 mb-4">Every website includes:</p>
               <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-700">
                 <span className="flex items-center">
                   <div className="w-4 h-4 rounded-full bg-green-500 mr-2" />
-                  SSL certificates
-                </span>
-                <span className="flex items-center">
-                  <div className="w-4 h-4 rounded-full bg-green-500 mr-2" />
-                  Global CDN
-                </span>
-                <span className="flex items-center">
-                  <div className="w-4 h-4 rounded-full bg-green-500 mr-2" />
-                  Mobile optimization
+                  Responsive design
                 </span>
                 <span className="flex items-center">
                   <div className="w-4 h-4 rounded-full bg-green-500 mr-2" />
                   SEO optimization
+                </span>
+                <span className="flex items-center">
+                  <div className="w-4 h-4 rounded-full bg-green-500 mr-2" />
+                  Clean, modern code
+                </span>
+                <span className="flex items-center">
+                  <div className="w-4 h-4 rounded-full bg-green-500 mr-2" />
+                  Accessibility features
                 </span>
               </div>
             </div>
